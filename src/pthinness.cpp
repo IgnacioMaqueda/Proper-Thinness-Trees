@@ -70,13 +70,12 @@ bool isStronglyConsistent(const Graph &g, const OrderAndPartition &op, int class
     return true;
 }
 
-OrderAndPartition insertVertex(OrderAndPartition op, int i, int j, int current) {
+_List_iterator<Pair> insertVertex(OrderAndPartition &op, int i, int j, int current) {
     auto it = op.begin();
     for (int k = 0; k < i; ++k) {
         it++;
     }
-    op.insert(it, {current, j});
-    return op;
+    return op.insert(it, {current, j});;
 }
 
 void printOrderAndPartition(const OrderAndPartition &op) {
@@ -86,30 +85,7 @@ void printOrderAndPartition(const OrderAndPartition &op) {
     cout << "|\n";
 }
 
-bool pthinnessRecursive(const Graph &g, const OrderAndPartition &op, int classes, int current) {
-    if (not isStronglyConsistent(g, op, classes)) {
-        return false;
-    }
-    if (current == g.vertices()) {
-        printOrderAndPartition(op);
-        return true;
-    }
-    for (int i = 0; i <= current; ++i) {
-        for (int j = 0; j < classes; ++j) {
-            if (pthinnessRecursive(g, insertVertex(op, i, j, current), classes, current + 1)) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-bool pthinness(const Graph &g, int clases) {
-    OrderAndPartition op;
-    return pthinnessRecursive(g, op, clases, 0);
-}
-
-bool pthinnessWithVertexOrderRecursive(const Graph &g, const OrderAndPartition &op, int classes, int current,
+bool pthinnessRecursive(const Graph &g, OrderAndPartition &op, int classes, int current,
                                        const vector<int> &vertexOrder) {
     if (not isStronglyConsistent(g, op, classes)) {
         return false;
@@ -120,16 +96,17 @@ bool pthinnessWithVertexOrderRecursive(const Graph &g, const OrderAndPartition &
     }
     for (int j = 0; j < classes; ++j) {
         for (int i = 0; i <= current; ++i) {
-            if (pthinnessWithVertexOrderRecursive(g, insertVertex(op, i, j, vertexOrder[current]), classes, current + 1,
-                                                  vertexOrder)) {
+            auto it = insertVertex(op, i, j, vertexOrder[current]);
+            if (pthinnessRecursive(g, op, classes, current + 1, vertexOrder)) {
                 return true;
             }
+            op.erase(it);
         }
     }
     return false;
 }
 
-bool pthinnessWithVertexOrder(const Graph &g, int classes, const vector<int> &vertexOrder) {
+bool pthinness(const Graph &g, int classes, const vector<int> &vertexOrder) {
     OrderAndPartition op;
-    return pthinnessWithVertexOrderRecursive(g, op, classes, 0, vertexOrder);
+    return pthinnessRecursive(g, op, classes, 0, vertexOrder);
 }

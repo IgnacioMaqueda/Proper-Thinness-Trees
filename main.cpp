@@ -10,7 +10,7 @@ void processTrees(int ammount, int vertices) {
     int num, verts, v, w;
     string line;
     for (int n = 1; n <= ammount; ++n) {
-        cerr << n << "\n";
+//        cerr << n << "\n";
         getline(cin, line);
         getline(cin, line);
         istringstream lineAsStream(line);
@@ -38,7 +38,7 @@ void processTrees(int ammount, int vertices) {
         }
         Graph g(vertices, adjacencyList);
         vector<int> vertexOrder = g.orderWithDFS();
-        if (not pthinnessWithVertexOrder(g, 3, vertexOrder)) {
+        if (not pthinness(g, 3, vertexOrder)) {
             cout << "Proper Thinness greater than 3!\n";
             return;
         }
