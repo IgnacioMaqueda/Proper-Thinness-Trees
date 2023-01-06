@@ -118,8 +118,8 @@ bool pthinnessWithVertexOrderRecursive(const Graph &g, const OrderAndPartition &
         printOrderAndPartition(op);
         return true;
     }
-    for (int i = 0; i <= current; ++i) {
-        for (int j = 0; j < classes; ++j) {
+    for (int j = 0; j < classes; ++j) {
+        for (int i = 0; i <= current; ++i) {
             if (pthinnessWithVertexOrderRecursive(g, insertVertex(op, i, j, vertexOrder[current]), classes, current + 1,
                                                   vertexOrder)) {
                 return true;

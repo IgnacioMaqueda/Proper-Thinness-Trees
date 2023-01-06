@@ -29,7 +29,7 @@ int Graph::maxDegreeVertex() const {
 
 vector<int> Graph::orderWithDFS() const {
     vector<int> res(vertices());
-    vector<bool> visitados(vertices(), false);
+    vector<bool> discovered(vertices(), false);
     int i = 0;
     stack<int> pila;
     int v;
@@ -37,8 +37,8 @@ vector<int> Graph::orderWithDFS() const {
     while (!pila.empty()) {
         v = pila.top();
         pila.pop();
-        if (not visitados[v]) {
-            visitados[v] = true;
+        if (not discovered[v]) {
+            discovered[v] = true;
             res[i++] = v;
             for (int w : listaAdy_[v]) {
                 pila.push(w);
