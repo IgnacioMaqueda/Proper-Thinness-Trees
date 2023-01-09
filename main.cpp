@@ -10,7 +10,7 @@ void processTrees(int ammount, int vertices) {
     int num, verts, v, w;
     string line;
     for (int n = 1; n <= ammount; ++n) {
-        cerr << n << ": ";
+        cerr << n << "\n";
         getline(cin, line);
         getline(cin, line);
         istringstream lineAsStream(line);
@@ -50,13 +50,13 @@ void processTrees(int ammount, int vertices) {
 }
 
 int main() {
-//    processTrees(106, 10);
+    processTrees(106, 10);
 //    processTrees(235, 11);
 //    processTrees(551, 12);
 //    processTrees(1301, 13);
 //    processTrees(3159, 14);
 //    processTrees(7741, 15);
-    processTrees(19320, 16);
+//    processTrees(19320, 16);
 //    processTrees(48629, 17);
 //    processTrees(123867, 18);
 //    processTrees(317955, 19);
