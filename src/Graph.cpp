@@ -7,7 +7,7 @@ int Graph::vertices() const {
 }
 
 bool Graph::areAdjacent(int v0, int v1) const {
-    for (int i : listaAdy_[v0]) {
+    for (int i: listaAdy_[v0]) {
         if (i == v1) {
             return true;
         }
@@ -40,7 +40,7 @@ vector<int> Graph::orderWithDFS() const {
         if (not discovered[v]) {
             discovered[v] = true;
             res[i++] = v;
-            for (int w : listaAdy_[v]) {
+            for (int w: listaAdy_[v]) {
                 pila.push(w);
             }
         }
@@ -52,7 +52,7 @@ void Graph::printGraph() const {
     cout << "Vertices: " << vertices_ << "\n";
     for (int i = 0; i < vertices_; ++i) {
         cout << i << ": [ ";
-        for (int j : listaAdy_[i]) {
+        for (int j: listaAdy_[i]) {
             cout << j << " ";
         }
         cout << "]\n";

@@ -10,7 +10,7 @@ void processTrees(int ammount, int vertices) {
     int num, verts, v, w;
     string line;
     for (int n = 1; n <= ammount; ++n) {
-//        cerr << n << "\n";
+        cerr << n << ": ";
         getline(cin, line);
         getline(cin, line);
         istringstream lineAsStream(line);
@@ -18,10 +18,12 @@ void processTrees(int ammount, int vertices) {
         vector<vector<int> > adjacencyList(vertices);
         if (n != num) {
             cout << "Numbers are wrong!\n";
+            cerr << "Numbers are wrong!\n";
             return;
         }
         if (verts != vertices) {
             cout << "Vertices are wrong!\n";
+            cerr << "Vertices are wrong!\n";
             return;
         }
         for (int i = 0; i < vertices; ++i) {
@@ -30,6 +32,7 @@ void processTrees(int ammount, int vertices) {
             lineAsStream >> v;
             if (v != i) {
                 cout << "Adjacency list is wrong!\n";
+                cerr << "Adjacency list is wrong!\n";
                 return;
             }
             while (lineAsStream >> w) {
@@ -40,19 +43,20 @@ void processTrees(int ammount, int vertices) {
         vector<int> vertexOrder = g.orderWithDFS();
         if (not pthinness(g, 3, vertexOrder)) {
             cout << "Proper Thinness greater than 3!\n";
+            cerr << "Proper Thinness greater than 3!\n";
             return;
         }
     }
 }
 
 int main() {
-    processTrees(106, 10);
+//    processTrees(106, 10);
 //    processTrees(235, 11);
 //    processTrees(551, 12);
 //    processTrees(1301, 13);
 //    processTrees(3159, 14);
 //    processTrees(7741, 15);
-//    processTrees(19320, 16);
+    processTrees(19320, 16);
 //    processTrees(48629, 17);
 //    processTrees(123867, 18);
 //    processTrees(317955, 19);

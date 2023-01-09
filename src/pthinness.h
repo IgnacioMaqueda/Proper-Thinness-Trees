@@ -15,7 +15,7 @@ _List_iterator<Pair> insertVertex(OrderAndPartition &op, int i, int j, int curre
 void printOrderAndPartition(const OrderAndPartition &op);
 
 bool pthinnessRecursive(const Graph &g, OrderAndPartition &op, int classes, int current,
-                                       const vector<int> &vertexOrder);
+                        const vector<int> &vertexOrder);
 
 bool pthinness(const Graph &g, int classes, const vector<int> &vertexOrder);
 

@@ -86,7 +86,7 @@ void printOrderAndPartition(const OrderAndPartition &op) {
 }
 
 bool pthinnessRecursive(const Graph &g, OrderAndPartition &op, int classes, int current,
-                                       const vector<int> &vertexOrder) {
+                        const vector<int> &vertexOrder) {
     if (not isStronglyConsistent(g, op, classes)) {
         return false;
     }
