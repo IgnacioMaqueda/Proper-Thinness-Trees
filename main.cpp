@@ -28,19 +28,19 @@ void processTrees(int ammount, int vertices) {
         }
         for (int i = 0; i < vertices; ++i) {
             getline(cin, line);
-            istringstream lineAsStream(line);
-            lineAsStream >> v;
+            istringstream lineAsStream2(line);
+            lineAsStream2 >> v;
             if (v != i) {
                 cout << "Adjacency list is wrong!\n";
                 cerr << "Adjacency list is wrong!\n";
                 return;
             }
-            while (lineAsStream >> w) {
+            while (lineAsStream2 >> w) {
                 adjacencyList[i].push_back(w);
             }
         }
         Graph g(vertices, adjacencyList);
-        vector<int> vertexOrder = g.orderWithDFS();
+        vector<int> vertexOrder = g.orderWithLongestPath();
         if (not pthinness(g, 3, vertexOrder)) {
             cout << "Proper Thinness greater than 3!\n";
             cerr << "Proper Thinness greater than 3!\n";

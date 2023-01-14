@@ -5,6 +5,8 @@
 #include <vector>
 #include <utility>
 #include <stack>
+#include <queue>
+#include <algorithm>
 #include "Utils.h"
 
 using namespace std;
@@ -19,13 +21,19 @@ public:
 
     int maxDegreeVertex() const;
 
+    int obtainEndWithBFS() const;
+
+    int obtainStartWithBFS(int, vector<int> &) const;
+
     vector<int> orderWithDFS() const;
+
+    vector<int> orderWithLongestPath() const;
 
     void printGraph() const;
 
 private:
     int vertices_;
-    AdjacencyList listaAdy_;
+    AdjacencyList adjacencyList_;
 };
 
 
